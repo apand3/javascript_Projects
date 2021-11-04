@@ -1,0 +1,28 @@
+const arr=[{name:"abhi",id:1},
+{name:"leo",id:2}]
+//arr.map(name=>console.log(name))
+
+Array.prototype.customMap=function(callbackFunc){
+    debugger
+    let mapArr=[];
+    for(let i=0;i<this.length;i++){
+        mapArr.push(callbackFunc(this[i],i,this))
+    }
+return mapArr;
+}
+Array.prototype.customFilter=function(callback){
+
+let filterArr=[];
+for(var i=0;i<this.length;i++){
+  if(callback.call(null,this[i],i,this))
+  {
+      filterArr.push(this[i]);
+  }
+}
+return filterArr;
+}
+ var tt=[1,2,3,4]
+ var io=tt.customFilter(function(x){
+     return x > 1
+ })
+ console.log(io);
