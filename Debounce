@@ -1,0 +1,20 @@
+https://www.freecodecamp.org/news/javascript-debounce-example/
+
+
+In JavaScript, a debounce function makes sure that your code is only triggered once per user input. 
+Search box suggestions, text-field auto-saves, and eliminating double-button clicks are all use cases for debounce.
+
+
+
+function debounce(func, timeout = 300){
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+function saveInput(){
+  console.log('Saving data');
+}
+const processChange = debounce(() => saveInput());
+<input type="text" onkeyup="processChange()" />
